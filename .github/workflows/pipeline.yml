@@ -31,5 +31,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.7.8
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'fsopen-pokedex-makeri89'
-          heroku_email: 'markus.kaihola@helsinki.fi'
+          heroku_app_name: fsopen-pokedex-makeri89
+          heroku_email: markus.kaihola@helsinki.fi
