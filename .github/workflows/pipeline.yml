@@ -48,3 +48,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
+      - name: notify slack on error
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status.code }}
+          fields: repo, message, commit, author, action, eventName, ref, workflow, job, took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ failure() }}
+      - name: notify slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: workflow, job, commit, repo, ref, author
+          custom_payload: |
+            {
+              username: 'action-slack',
+              icon_emoji: ':octocat:',
+              attachments: [{
+                text: 'new version succesfully deployed to https://fsopen-pokedex-makeri89.herokuapp.com',
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ success() }}     
