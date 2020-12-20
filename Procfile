@@ -1,1 +1,1 @@
-web: node app.txt
+web: node app.js
