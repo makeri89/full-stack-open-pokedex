@@ -38,7 +38,7 @@ jobs:
           heroku_app_name: fsopen-pokedex-makeri89
           heroku_email: markus.kaihola@helsinki.fi
           healthcheck: https://fsopen-pokedex-makeri89.herokuapp.com/health
-          checkstring: '2'
+          checkstring: '3'
           delay: 5
           rollbackonhealthcheckfailed: true
       - uses: actions/checkout@v2
@@ -48,4 +48,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-          
