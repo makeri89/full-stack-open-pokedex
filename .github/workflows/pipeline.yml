@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
@@ -34,6 +37,6 @@ jobs:
           heroku_app_name: fsopen-pokedex-makeri89
           heroku_email: markus.kaihola@helsinki.fi
           healthcheck: https://fsopen-pokedex-makeri89.herokuapp.com/health
-          checkstring: '1'
+          checkstring: '2'
           delay: 5
           rollbackonhealthcheckfailed: true
