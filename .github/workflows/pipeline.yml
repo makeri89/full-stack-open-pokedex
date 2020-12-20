@@ -38,7 +38,7 @@ jobs:
           heroku_app_name: fsopen-pokedex-makeri89
           heroku_email: markus.kaihola@helsinki.fi
           healthcheck: https://fsopen-pokedex-makeri89.herokuapp.com/health
-          checkstring: '3'
+          checkstring: '4'
           delay: 5
           rollbackonhealthcheckfailed: true
       - uses: actions/checkout@v2
@@ -67,8 +67,9 @@ jobs:
               icon_emoji: ':octocat:',
               attachments: [{
                 text: 'new version succesfully deployed to https://fsopen-pokedex-makeri89.herokuapp.com',
-              }]
+                color: 'good'
+                }]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: ${{ success() }}     
+        if: ${{ success() && github.event_name == 'push' }}     
