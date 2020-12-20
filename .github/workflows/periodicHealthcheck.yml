@@ -1,11 +1,8 @@
 name: Deployment pipeline
 
 on:
-  push:
-    branches:
-      - master
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '* * */1 * *' # once a month
 
 jobs:
   periodic_healthcheck:
