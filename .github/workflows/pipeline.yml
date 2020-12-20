@@ -33,3 +33,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: fsopen-pokedex-makeri89
           heroku_email: markus.kaihola@helsinki.fi
+          healthcheck: https://fsopen-pokedex-makeri89.herokuapp.com/health
+          checkstring: '1'
+          delay: 5
